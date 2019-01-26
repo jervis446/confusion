@@ -12,10 +12,10 @@ class CommentForm extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        name: '',
+        author: '',
         modal: false,
         touched: {
-            name: false
+            author: false
         }
       };
   
@@ -51,8 +51,8 @@ class CommentForm extends Component {
                               </FormGroup>
                               <FormGroup>
                                   <Label htmlFor="name">Your Name</Label>
-                                  <Control.text model=".name" id="name" name="name"
-                                        placeholder="Name"
+                                  <Control.text model=".author" id="author" name="name"
+                                        placeholder="Your Name"
                                         className="form-control"
                                         validators={{
                                             required, minLength: minLength(3), maxLength: maxLength(15)
@@ -60,7 +60,7 @@ class CommentForm extends Component {
                                          />
                                     <Errors
                                         className="text-danger"
-                                        model=".name"
+                                        model=".author"
                                         show="touched"
                                         messages={{
                                             required: 'Required',
