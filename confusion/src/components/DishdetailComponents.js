@@ -27,7 +27,10 @@ class CommentForm extends Component {
         modal: !this.state.modal
       });
     }
-
+    handleSubmit(values) {
+        this.toggle();
+        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+    }
   
     render() {
       return (
@@ -37,10 +40,10 @@ class CommentForm extends Component {
           <Modal isOpen={this.state.modal} toggle={this.toggle} >
             <ModalHeader toggle={this.toggle}>Submit Comment</ModalHeader>
             <ModalBody>
-                         <LocalForm >
+                <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
                               <FormGroup>
                                   <Label htmlFor="rating">Rating</Label>
-                                  <Control.select model=".rating" name="rating"
+                                  <Control.select model=".rating" id="rating" name="rating"
                                               className="form-control">
                                               <option>1</option>
                                               <option>2</option>
@@ -71,7 +74,7 @@ class CommentForm extends Component {
                               </FormGroup>
                               <FormGroup>
                               <Label htmlFor="comment">Comment</Label>
-                                  <Control.textarea model=".message" id="message" name="message"
+                                  <Control.textarea model=".comment" id="comment" name="comment"
                                               rows="6"
                                               className="form-control" />
                               </FormGroup>
@@ -108,7 +111,7 @@ class CommentForm extends Component {
         }
     }
 
-    function RenderComments({comments}){
+    function RenderComments({comments, addComment, dishId}) {
         if (comments != null) {
             const commentsToDisplay = comments.map((comment) => {
                 return (
@@ -117,14 +120,16 @@ class CommentForm extends Component {
                         <br></br>
                         -- {comment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}
                         <p></p>
+                       
                     </div>
+                    
                 );
             });
             return (
                 <div className="col-12 col-md-5 m-1">
                     <h4>Comments</h4>
                     {commentsToDisplay}
-                    <CommentForm />
+                    <CommentForm dishId={dishId} addComment={addComment} />
                 </div>
             );
         } else {
@@ -155,7 +160,10 @@ class CommentForm extends Component {
                         <RenderDish dish={props.dish} />
                     </div>
                     <div className="col-12 col-md-5 m-1">
-                        <RenderComments comments={props.comments} />
+                        <RenderComments comments={props.comments}
+                            addComment={props.addComment}
+                            dishId={props.dish.id}
+                        />
                     </div>
                 </div>
                 </div>
