@@ -3,6 +3,7 @@ import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbIte
     Button, Modal, ModalHeader, ModalBody, Form,Input, FormGroup, Label } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
+import { Loading } from './LoadingComponent';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -78,8 +79,8 @@ class CommentForm extends Component {
                                               rows="6"
                                               className="form-control" />
                               </FormGroup>
-                              <Button type="submit" value="submit" color="primary">Submit</Button>
-                          </LocalForm>
+                <Button type="submit" value="submit" color="primary">Submit</Button>
+            </LocalForm>
                           
             </ModalBody>
             
@@ -141,6 +142,26 @@ class CommentForm extends Component {
 
 
     const DishDetail = (props) => {
+        if (props.isLoading) {
+            return(
+                <div className="container">
+                    <div className="row">            
+                        <Loading />
+                    </div>
+                </div>
+            );
+        }
+        else if (props.errMess) {
+            return(
+                <div className="container">
+                    <div className="row">            
+                        <h4>{props.errMess}</h4>
+                    </div>
+                </div>
+            );
+        }
+        else if (props.dish != null) 
+
         if (props.dish != null) {
             return (
                 <div className="container">
