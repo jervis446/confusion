@@ -1,36 +1,43 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Fade, Stagger } from 'react-animation-components';
+import { baseUrl } from '../shared/baseUrl';
+const leaderImg = {
+    height: '105px',
+    width:'105px',
+    minHeight: '105px',
+    maxHeight: '105px',
+    minWidth: '105px',
+    maxWidth: '105px'
+}
+function RenderLeader({leader}) {
+    return(
+        <Stagger in>
+            <Fade in>
+                    <div key={leader.id} className="col-12 mt-5">
+            <Media tag="li">
+              <Media left middle>
+                  <Media style={leaderImg} object src={baseUrl + leader.image} alt={leader.name} />
+              </Media>
+              <Media body className="ml-5">
+                <Media heading>{leader.name}</Media>
+                <p>{leader.designation}</p>
+                <p>{leader.description}</p>
+              </Media>
+            </Media>
+          </div>
+                    </Fade>
+            </Stagger>
+        
+    );
+
+}
 
 function About(props) {
-
-    function RenderLeader({leaders}){
-        return(
-            <div className="container">
-            <div className="row">
-              <Media list>
-                  {leaders}
-              </Media>
-            </div>
-          </div>
-        );
-    }
-
-    const leaders = props.leaders.map((leader) => {
+    const leaders = props.leaders.leaders.map((leader) => {
         return (
-            <div key={props.leaders.id} className="col-12 mt-5" >
-                <Media tag="li">
-                    <Media left middle>
-                        <Media object src={leader.image} alt={leader.name} />
-                    </Media>
-                    <Media body className="ml-5">
-                        <Media heading>{leader.name}</Media>
-                        <Media subheading>{leader.designation}</Media>
-                        <br></br>
-                    <p>{leader.description}</p>
-              </Media>
-                </Media>
-            </div>
+          <RenderLeader leader={leader} key={leader.id}/>
         );
     });
 
@@ -97,5 +104,4 @@ function About(props) {
         </div>
     );
 }
-
 export default About;    
