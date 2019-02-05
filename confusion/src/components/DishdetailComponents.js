@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem,
-    Button, Modal, ModalHeader, ModalBody, Form,Input, FormGroup, Label } from 'reactstrap';
+    Button, Modal, ModalHeader, ModalBody, FormGroup, Label } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';

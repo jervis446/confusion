@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Breadcrumb, BreadcrumbItem,
     Button, Row, Col, Label } from 'reactstrap';
-import { Control, Form, Errors, actions } from 'react-redux-form';
+import { Control, Form, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
 
 
@@ -15,29 +15,31 @@ class Contact extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            firstname: '',
-            lastname: '',
-            telnum: '',
-            email: '',
-            agree: false,
-            contactType: 'Tel.',
-            message: '',
-            touched: {
-                firstname: false,
-                lastname: false,
-                telnum: false,
-                email: false
-            }
-        };
+        // this.state = {
+        //     firstname: '',
+        //     lastname: '',
+        //     telnum: '',
+        //     email: '',
+        //     agree: false,
+        //     contactType: 'Tel.',
+        //     message: '',
+        //     touched: {
+        //         firstname: false,
+        //         lastname: false,
+        //         telnum: false,
+        //         email: false
+        //     }
+        // };
 
         this.handleSubmit = this.handleSubmit.bind(this); 
         
     }
 
     handleSubmit(values) {
-        console.log('Current State is: ' + JSON.stringify(values));
-        alert('Current State is: ' + JSON.stringify(values));
+        // console.log('Current State is: ' + JSON.stringify(values));
+        // alert('Current State is: ' + JSON.stringify(values));
+        // this.props.resetFeedbackForm();
+        this.props.postFeedback(values)
         this.props.resetFeedbackForm();
         // event.preventDefault();
     }
@@ -77,7 +79,7 @@ class Contact extends Component {
                     <div className="col-12 col-sm-11 offset-sm-1">
                         <div className="btn-group" role="group">
                             <a role="button" className="btn btn-primary" href="tel:+85212345678"><i className="fa fa-phone"></i> Call</a>
-                            <a role="button" className="btn btn-info"><i className="fa fa-skype"></i> Skype</a>
+                            <a role="button" className="btn btn-info" href="tel:+85212345678"><i className="fa fa-skype"></i> Skype</a>
                             <a role="button" className="btn btn-success" href="mailto:confusion@food.net"><i className="fa fa-envelope-o"></i> Email</a>
                         </div>
                     </div>
