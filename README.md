@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## JSON SERVER
+
+In this Project you need to Create JSON Server for Data fetching(cause we don't have BackEnd support right now)
+
+Simple Follow These Step : 
+
+ 1) Cut Json-Server Folder and paste it as per your convience.
+ 2) `json-server --watch db.json -p 3001 -d 2000` in same repository.
+ 3) Now we have running Json Server.
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -42,4 +52,4 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-# confusion
+
