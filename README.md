@@ -7,7 +7,7 @@ In this Project you need to Create JSON Server for Data fetching(cause we don't 
 Simple Follow These Step : 
 
  1) Cut Json-Server Folder and paste it as per your convience.
- 2) `json-server --watch db.json -p 3001 -d 2000` in same repository.
+ 2) run command `json-server --watch db.json -p 3001 -d 2000` on terminal in same repository.
  3) Now we have running Json Server.
 
 ## Available Scripts
